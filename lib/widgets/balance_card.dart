@@ -19,11 +19,7 @@ class BalanceCard extends StatelessWidget {
         gradient: const LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [
-            Color(0xFF16A34A),
-            Color(0xFF22C55E),
-            Color(0xFF4ADE80),
-          ],
+          colors: [Color(0xFF16A34A), Color(0xFF22C55E), Color(0xFF4ADE80)],
         ),
         borderRadius: BorderRadius.circular(24),
         boxShadow: [
@@ -49,7 +45,10 @@ class BalanceCard extends StatelessWidget {
                 ),
               ),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 4,
+                ),
                 decoration: BoxDecoration(
                   color: Colors.white.withValues(alpha: 0.2),
                   borderRadius: BorderRadius.circular(20),
@@ -58,17 +57,18 @@ class BalanceCard extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Icon(
-                      finance.isSaving ? Icons.trending_up : Icons.trending_down,
-                      color: Colors.white,
+                      finance.isSaving
+                          ? Icons.trending_up
+                          : Icons.trending_down,
+                      color: finance.isSaving ? AppColors.white : AppColors.expense,
                       size: 14,
                     ),
                     const SizedBox(width: 4),
                     Text(
                       finance.isSaving ? 'Economizando' : 'Gastando',
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 11,
-                        fontWeight: FontWeight.w600,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: finance.isSaving ? AppColors.white : AppColors.expense,
                       ),
                     ),
                   ],
@@ -99,11 +99,7 @@ class BalanceCard extends StatelessWidget {
                   icon: Icons.arrow_downward_rounded,
                 ),
               ),
-              Container(
-                width: 1,
-                height: 40,
-                color: Colors.white24,
-              ),
+              Container(width: 1, height: 40, color: Colors.white24),
               Expanded(
                 child: _SummaryItem(
                   label: 'Despesas',
@@ -139,10 +135,14 @@ class _SummaryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: alignEnd ? 16 : 0, right: alignEnd ? 0 : 16),
+      padding: EdgeInsets.only(
+        left: alignEnd ? 16 : 0,
+        right: alignEnd ? 0 : 16,
+      ),
       child: Column(
-        crossAxisAlignment:
-            alignEnd ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+        crossAxisAlignment: alignEnd
+            ? CrossAxisAlignment.end
+            : CrossAxisAlignment.start,
         children: [
           Row(
             mainAxisSize: MainAxisSize.min,

@@ -1,9 +1,12 @@
-enum TransactionType {
-  income,
-  expense;
+import 'package:hive/hive.dart';
 
-  String get label => switch (this) {
-        TransactionType.income => 'Receita',
-        TransactionType.expense => 'Despesa',
-      };
+part 'transaction_type.g.dart';
+
+@HiveType(typeId: 1)
+enum TransactionType {
+  @HiveField(0)
+  income,
+
+  @HiveField(1)
+  expense,
 }
