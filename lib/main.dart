@@ -7,15 +7,19 @@ import 'package:finper_flutter/models/transaction.dart';
 import 'package:finper_flutter/models/transaction_type.dart';
 
 Future<void> main() async {
+
   WidgetsFlutterBinding.ensureInitialized();
   await initializeDateFormatting('pt_BR', null);
 
   await Hive.initFlutter();
+  
   Hive.registerAdapter(TransactionAdapter());
   Hive.registerAdapter(TransactionTypeAdapter());
 
+  
   await Hive.openBox<Transaction>('transactions');
   await Hive.openBox('settings');
+ 
 
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(

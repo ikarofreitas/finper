@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:finper_flutter/core/theme/app_theme.dart';
 import 'package:finper_flutter/providers/finance_provider.dart';
 import 'package:finper_flutter/screens/main_shell.dart';
+import 'package:finper_flutter/screens/splash/splash_screen.dart';
 
 class FinPerApp extends StatelessWidget {
   const FinPerApp({super.key});
@@ -19,7 +20,7 @@ class FinPerApp extends StatelessWidget {
             theme: AppTheme.light(),
             darkTheme: AppTheme.dark(),
             themeMode: finance.isDarkMode ? ThemeMode.dark : ThemeMode.light,
-            home: const MainShell(),
+            home: const SplashScreen(),
           );
         },
       ),

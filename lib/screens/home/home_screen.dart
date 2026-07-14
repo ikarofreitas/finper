@@ -5,7 +5,7 @@ import 'package:finper_flutter/core/utils/date_formatter.dart';
 import 'package:finper_flutter/providers/finance_provider.dart';
 import 'package:finper_flutter/widgets/app_card.dart';
 import 'package:finper_flutter/widgets/balance_card.dart';
-import 'package:finper_flutter/widgets/expense_chart.dart';
+import 'package:finper_flutter/widgets/balance_chart.dart';
 import 'package:finper_flutter/widgets/transaction_tile.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -48,7 +48,7 @@ class HomeScreen extends StatelessWidget {
                     const BalanceCard(),
                     const SizedBox(height: 20),
                     AppCard(
-                      child: const ExpenseChart(),
+                      child: const BalanceChart(),
                     ),
                     const SizedBox(height: 28),
                     Row(
