@@ -126,7 +126,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           const SizedBox(height: 40),
 
           const Text(
-            "Bem-vindo ao FinPer",
+            "Bem-vindo ao Finper",
             style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
           ),
 

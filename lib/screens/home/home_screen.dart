@@ -7,12 +7,10 @@ import 'package:finper_flutter/widgets/app_card.dart';
 import 'package:finper_flutter/widgets/balance_card.dart';
 import 'package:finper_flutter/widgets/balance_chart.dart';
 import 'package:finper_flutter/widgets/transaction_tile.dart';
+import 'package:finper_flutter/widgets/banner_ad_widget.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({
-    super.key,
-    required this.onAddTransaction,
-  });
+  const HomeScreen({super.key, required this.onAddTransaction});
 
   final VoidCallback onAddTransaction;
 
@@ -47,9 +45,7 @@ class HomeScreen extends StatelessWidget {
                     const SizedBox(height: 24),
                     const BalanceCard(),
                     const SizedBox(height: 20),
-                    AppCard(
-                      child: const BalanceChart(),
-                    ),
+                    AppCard(child: const BalanceChart()),
                     const SizedBox(height: 28),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -118,13 +114,28 @@ class HomeScreen extends StatelessWidget {
                 padding: const EdgeInsets.fromLTRB(24, 12, 24, 100),
                 sliver: SliverList(
                   delegate: SliverChildBuilderDelegate(
-                    (context, index) => TransactionTile(
-                      transaction: recent[index],
-                    ),
+                    (context, index) =>
+                        TransactionTile(transaction: recent[index]),
                     childCount: recent.length,
                   ),
                 ),
               ),
+
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(24, 8, 24, 100),
+                child: Column(
+                  children: [
+                    Text(
+                      "Publicidade",
+                      style: TextStyle(color: Colors.grey, fontSize: 11),
+                    ),
+                    SizedBox(height: 6),
+                    BannerAdWidget(),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),

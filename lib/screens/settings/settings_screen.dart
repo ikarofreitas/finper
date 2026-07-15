@@ -28,11 +28,11 @@ class SettingsScreen extends StatelessWidget {
                   color: Colors.white, size: 22),
             ),
             const SizedBox(width: 12),
-            const Text('FinPer'),
+            const Text('Finper'),
           ],
         ),
         content: const Text(
-          'FinPer é um aplicativo de gestão de finanças pessoais. '
+          'Finper é um aplicativo de gestão de finanças pessoais. '
           'Controle suas receitas e despesas de forma simples e elegante.\n\n'
           'Versão 1.0.0',
         ),
@@ -54,7 +54,7 @@ class SettingsScreen extends StatelessWidget {
         title: const Text('Política de Privacidade'),
         content: const SingleChildScrollView(
           child: Text(
-            'O FinPer armazena todos os dados localmente no seu dispositivo. '
+            'O Finper armazena todos os dados localmente no seu dispositivo. '
             'Nenhuma informação é enviada para servidores externos.\n\n'
             'Este é um aplicativo demonstrativo sem backend. '
             'Seus dados financeiros permanecem apenas na memória do app '
@@ -207,15 +207,6 @@ class SettingsScreen extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 4),
-                        Text(
-                          'ikaro@email.com',
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: isDark
-                                ? AppColors.darkTextSecondary
-                                : AppColors.textSecondary,
-                          ),
-                        ),
                         const SizedBox(height: 8),
                         Container(
                           padding: const EdgeInsets.symmetric(
@@ -335,7 +326,7 @@ class SettingsScreen extends StatelessWidget {
             const SizedBox(height: 32),
             Center(
               child: Text(
-                'FinPer © 2026',
+                'Finper © 2026',
                 style: TextStyle(
                   fontSize: 12,
                   color: isDark
