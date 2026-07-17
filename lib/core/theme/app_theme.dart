@@ -45,7 +45,6 @@ abstract final class AppTheme {
         backgroundColor: AppColors.primary,
         foregroundColor: AppColors.white,
         elevation: 4,
-        shape: CircleBorder(),
       ),
       navigationBarTheme: NavigationBarThemeData(
         elevation: 0,

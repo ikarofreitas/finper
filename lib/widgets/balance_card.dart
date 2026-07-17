@@ -12,19 +12,37 @@ class BalanceCard extends StatelessWidget {
     final finance = context.watch<FinanceProvider>();
     final currency = finance.currency;
 
+    final isSaving = finance.isSaving;
+
+final gradientColors = isSaving
+    ? const [
+        Color(0xFF16A34A),
+        Color(0xFF22C55E),
+        Color(0xFF4ADE80),
+      ]
+    : const [
+        Color(0xFFDC2626),
+        Color(0xFFEF4444),
+        Color(0xFFF87171),
+      ];
+
+final shadowColor = isSaving
+    ? AppColors.primary.withValues(alpha: 0.35)
+    : Colors.red.withValues(alpha: 0.35);
+
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [Color(0xFF16A34A), Color(0xFF22C55E), Color(0xFF4ADE80)],
-        ),
+        gradient: LinearGradient(
+  begin: Alignment.topLeft,
+  end: Alignment.bottomRight,
+  colors: gradientColors,
+),
         borderRadius: BorderRadius.circular(24),
         boxShadow: [
           BoxShadow(
-            color: AppColors.primary.withValues(alpha: 0.35),
+            color: shadowColor,
             blurRadius: 28,
             offset: const Offset(0, 12),
           ),
@@ -60,7 +78,7 @@ class BalanceCard extends StatelessWidget {
                       finance.isSaving
                           ? Icons.trending_up
                           : Icons.trending_down,
-                      color: finance.isSaving ? AppColors.white : AppColors.expense,
+                      color: Colors.white,
                       size: 14,
                     ),
                     const SizedBox(width: 4),
@@ -68,7 +86,7 @@ class BalanceCard extends StatelessWidget {
                       finance.isSaving ? 'Economizando' : 'Gastando',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: finance.isSaving ? AppColors.white : AppColors.expense,
+                        color: Colors.white,
                       ),
                     ),
                   ],

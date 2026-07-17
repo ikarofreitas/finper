@@ -345,7 +345,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             child: ElevatedButton(
               onPressed: _finish,
 
-              child: const Text("Entrar no FinPer"),
+              child: const Text("Entrar no Finper"),
             ),
           ),
         ],
