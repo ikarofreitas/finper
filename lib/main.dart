@@ -21,6 +21,9 @@ Future<void> main() async {
   
   await Hive.openBox<Transaction>('transactions');
   await Hive.openBox('settings');
+
+  await Hive.box<Transaction>('transactions').clear();
+  await Hive.box('settings').clear();
  
 
   SystemChrome.setSystemUIOverlayStyle(

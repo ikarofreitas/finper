@@ -16,16 +16,80 @@ class TransactionTile extends StatelessWidget {
   final Transaction transaction;
 
   @override
-  Widget build(BuildContext context) {
-    final finance = context.watch<FinanceProvider>();
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    final isIncome = transaction.isIncome;
-    final color = isIncome ? AppColors.income : AppColors.expense;
-    final bgColor = isIncome
-        ? AppColors.primarySurface
-        : (isDark ? AppColors.expense.withValues(alpha: 0.15) : AppColors.expenseLight);
+Widget build(BuildContext context) {
+  final finance = context.watch<FinanceProvider>();
+  final isDark = Theme.of(context).brightness == Brightness.dark;
+  final isIncome = transaction.isIncome;
+  final color = isIncome ? AppColors.income : AppColors.expense;
 
-    return Padding(
+  final bgColor = isIncome
+      ? AppColors.primarySurface
+      : (isDark
+          ? AppColors.expense.withValues(alpha: 0.15)
+          : AppColors.expenseLight);
+
+  return Dismissible(
+    key: ValueKey(transaction.id),
+    direction: DismissDirection.endToStart,
+
+    background: Container(
+      margin: const EdgeInsets.symmetric(vertical: 6),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      alignment: Alignment.centerRight,
+      decoration: BoxDecoration(
+        color: Colors.red,
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: const Icon(
+        Icons.delete_outline,
+        color: Colors.white,
+        size: 28,
+      ),
+    ),
+
+    confirmDismiss: (_) async {
+      final result = await showDialog<bool>(
+        context: context,
+        builder: (dialogContext) {
+          return AlertDialog(
+            title: const Text("Excluir transação"),
+            content: const Text(
+              "Deseja realmente excluir esta transação?",
+            ),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(dialogContext, false);
+                },
+                child: const Text("Cancelar"),
+              ),
+              FilledButton(
+                onPressed: () {
+                  Navigator.pop(dialogContext, true);
+                },
+                child: const Text("Excluir"),
+              ),
+            ],
+          );
+        },
+      );
+
+      return result ?? false;
+    },
+
+    onDismissed: (_) async {
+      await finance.removeTransaction(transaction.id);
+
+      if (!context.mounted) return;
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Transação excluída."),
+        ),
+      );
+    },
+
+    child: Padding(
       padding: const EdgeInsets.symmetric(vertical: 6),
       child: Row(
         children: [
@@ -82,6 +146,7 @@ class TransactionTile extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
+    ),
+  );
+}
 }

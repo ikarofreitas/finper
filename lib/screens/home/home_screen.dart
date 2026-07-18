@@ -62,6 +62,7 @@ class HomeScreen extends StatelessWidget {
                             letterSpacing: -0.3,
                           ),
                         ),
+                        
                         TextButton(
                           onPressed: () {
                             Navigator.push(
@@ -119,15 +120,62 @@ class HomeScreen extends StatelessWidget {
               )
             else
               SliverPadding(
-                padding: const EdgeInsets.fromLTRB(24, 12, 24, 100),
-                sliver: SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                    (context, index) =>
-                        TransactionTile(transaction: recent[index]),
-                    childCount: recent.length,
-                  ),
+  padding: const EdgeInsets.fromLTRB(24, 12, 24, 100),
+  sliver: SliverList(
+    delegate: SliverChildBuilderDelegate(
+      (context, index) {
+        if (index == 0) {
+          return Column(
+            children: [
+              Container(
+                margin: const EdgeInsets.only(bottom: 12),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 10,
+                ),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? Colors.white10
+                      : Colors.grey.shade100,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Row(
+                  children: [
+                    const Icon(
+                      Icons.swipe_left_rounded,
+                      size: 18,
+                      color: Colors.grey,
+                    ),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: Text(
+                        'Arraste uma transação para a esquerda para excluí-la.',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Theme.of(context).brightness ==
+                                  Brightness.dark
+                              ? Colors.white70
+                              : Colors.grey.shade700,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
+
+              TransactionTile(transaction: recent.first),
+            ],
+          );
+        }
+
+        return TransactionTile(
+          transaction: recent[index],
+        );
+      },
+      childCount: recent.length,
+    ),
+  ),
+),
 
             SliverToBoxAdapter(
               child: Padding(
