@@ -8,6 +8,7 @@ import 'package:finper_flutter/widgets/balance_card.dart';
 import 'package:finper_flutter/widgets/balance_chart.dart';
 import 'package:finper_flutter/widgets/transaction_tile.dart';
 import 'package:finper_flutter/widgets/banner_ad_widget.dart';
+import 'package:finper_flutter/screens/transactions/all_transactions_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key, required this.onAddTransaction});
@@ -62,7 +63,14 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const TransactionsScreen(),
+                              ),
+                            );
+                          },
                           style: TextButton.styleFrom(
                             foregroundColor: AppColors.primary,
                             padding: EdgeInsets.zero,

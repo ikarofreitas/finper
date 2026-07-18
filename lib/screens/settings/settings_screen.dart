@@ -24,8 +24,11 @@ class SettingsScreen extends StatelessWidget {
                 ),
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: const Icon(Icons.account_balance_wallet_rounded,
-                  color: Colors.white, size: 22),
+              child: const Icon(
+                Icons.account_balance_wallet_rounded,
+                color: Colors.white,
+                size: 22,
+              ),
             ),
             const SizedBox(width: 12),
             const Text('Finper'),
@@ -58,7 +61,9 @@ class SettingsScreen extends StatelessWidget {
             'Nenhuma informação é enviada para servidores externos.\n\n'
             'Este é um aplicativo demonstrativo sem backend. '
             'Seus dados financeiros permanecem apenas na memória do app '
-            'durante a sessão atual.',
+            'durante a sessão atual. \n'
+            'Você pode saber mais em: \n'
+            'https://finpertermsconditions.netlify.app',
           ),
         ),
         actions: [
@@ -101,10 +106,7 @@ class SettingsScreen extends StatelessWidget {
                 const SizedBox(height: 16),
                 const Text(
                   'Moeda utilizada',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w700,
-                  ),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
                 ),
                 const SizedBox(height: 8),
                 ...currencies.map((item) {
@@ -128,8 +130,10 @@ class SettingsScreen extends StatelessWidget {
                     title: Text(name),
                     subtitle: Text(code),
                     trailing: isSelected
-                        ? const Icon(Icons.check_circle,
-                            color: AppColors.primary)
+                        ? const Icon(
+                            Icons.check_circle,
+                            color: AppColors.primary,
+                          )
                         : null,
                     onTap: () {
                       finance.setCurrency(code);
@@ -151,9 +155,7 @@ class SettingsScreen extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Configurações'),
-      ),
+      appBar: AppBar(title: const Text('Configurações')),
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.fromLTRB(24, 8, 24, 32),
@@ -231,8 +233,10 @@ class SettingsScreen extends StatelessWidget {
                   ),
                   IconButton(
                     onPressed: () {},
-                    icon: const Icon(Icons.edit_outlined,
-                        color: AppColors.primary),
+                    icon: const Icon(
+                      Icons.edit_outlined,
+                      color: AppColors.primary,
+                    ),
                   ),
                 ],
               ),
@@ -267,7 +271,7 @@ class SettingsScreen extends StatelessWidget {
                   ),
                   SettingsTile(
                     icon: Icons.notifications_outlined,
-                    title: 'Notificações',
+                    title: 'Notificações (em desenvolvimento)',
                     subtitle: 'Lembretes de gastos',
                     onTap: () {},
                   ),
@@ -277,8 +281,8 @@ class SettingsScreen extends StatelessWidget {
                     subtitle: finance.currency == 'BRL'
                         ? 'Real Brasileiro (R\$)'
                         : finance.currency == 'USD'
-                            ? 'Dólar Americano (\$)'
-                            : 'Euro (€)',
+                        ? 'Dólar Americano (\$)'
+                        : 'Euro (€)',
                     onTap: () => _showCurrencyDialog(context, finance),
                     showDivider: false,
                   ),
