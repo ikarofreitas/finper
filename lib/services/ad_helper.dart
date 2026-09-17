@@ -10,7 +10,7 @@ class AdHelper {
 
     if (Platform.isAndroid) {
       // Produção
-      return 'ca-app-pub-9524621548436380/6356051553';
+      return 'ca-app-pub-9097047281588244/5999681493';
     }
 
     throw UnsupportedError('Plataforma não suportada');
