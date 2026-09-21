@@ -1,4 +1,4 @@
-package com.finper.finper_flutter
+package com.kiapps.finper
 
 import io.flutter.embedding.android.FlutterActivity
 
